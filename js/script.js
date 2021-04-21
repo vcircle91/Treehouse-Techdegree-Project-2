@@ -11,8 +11,6 @@ function showPage(list, page){
    // Those variables generate the index for the first and last student on the page
    let startIndex = (page  * studentsPerPage) - studentsPerPage;
    let endIndex = page * studentsPerPage;
-   console.log(startIndex);
-   console.log(endIndex);
 
    // Select "student-list" and empty it
    let studentList = document.querySelector('.student-list');
@@ -41,7 +39,40 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
+function addPagination(list){
+  // create a variable to calculate the number of pages needed
+  let numOfPages = Math.ceil(list.length / studentsPerPage);
+
+  // select the element with a class of `link-list` and assign it to a variable
+   let linkList = document.querySelector('.link-list');
+   linkList.innerHTML = ``;
+   
+   for (i = 0; i < numOfPages; i++){
+     linkList.innerHTML += `
+          <li>
+            <button type="button">${i + 1}</button>
+          </li>`;
+   }
+
+   let firstButton = document.querySelector("button");
+   firstButton.className = "active";
+   console.log(firstButton);
+
+  // loop over the number of pages needed
+    // create the elements needed to display the pagination button
+    // insert the above elements
+
+  // give the first pagination button a class of "active"
+
+  // create an event listener on the `link-list` element
+    // if the click target is a button:
+      // remove the "active" class from the previous button
+      // add the active class to the clicked button
+      // call the showPage function passing the `list` parameter and page to display as arguments
+   }
+
 
 
 // Call functions
-showPage(data, 1)
+showPage(data, 1);
+addPagination(data);
