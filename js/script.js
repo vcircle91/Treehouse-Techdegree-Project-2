@@ -67,14 +67,19 @@ function addPagination(list){
          showPage(data, event.target.textContent)
       }
    });
-
-
-  // create an event listener on the `link-list` element
-    // if the click target is a button:
-      // remove the "active" class from the previous button
-      // add the active class to the clicked button
-      // call the showPage function passing the `list` parameter and page to display as arguments
    }
+
+function addSearchBar(){
+   header = document.querySelector('header');
+   searchBox = document.createElement('div');
+   searchBox.innerHTML = `
+   <label for="search" class="student-search">
+   <span>Search by name</span>
+   <input id="search" placeholder="Search by name...">
+   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label>`;
+   header.appendChild(searchBox);
+}   
 
    
 
@@ -83,3 +88,4 @@ function addPagination(list){
 // Call functions
 showPage(data, 1);
 addPagination(data);
+addSearchBar();
