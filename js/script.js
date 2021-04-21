@@ -18,6 +18,7 @@ function showPage(list, page){
 
    // Fill list with information with a loop
    for (i = startIndex; i < endIndex; i++){
+      if(list[i]){
      studentList.innerHTML += `
      <li class="student-item cf">
      <div class="student-details">
@@ -30,6 +31,7 @@ function showPage(list, page){
      </div>
    </li>`
    }
+}
 
 }
 
@@ -58,11 +60,14 @@ function addPagination(list){
    firstButton.className = "active";
    console.log(firstButton);
 
-  // loop over the number of pages needed
-    // create the elements needed to display the pagination button
-    // insert the above elements
+   linkList.addEventListener('click', (event) => {
+      if (event.target.type === 'button') {
+         document.querySelector('.active').classList.remove("active");
+         event.target.className = "active";
+         showPage(data, event.target.textContent)
+      }
+   });
 
-  // give the first pagination button a class of "active"
 
   // create an event listener on the `link-list` element
     // if the click target is a button:
@@ -70,6 +75,8 @@ function addPagination(list){
       // add the active class to the clicked button
       // call the showPage function passing the `list` parameter and page to display as arguments
    }
+
+   
 
 
 
