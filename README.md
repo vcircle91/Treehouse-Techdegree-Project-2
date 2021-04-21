@@ -1,2 +1,2 @@
-# unit-02
+# #Treehouse Techdegree Project 2
  
