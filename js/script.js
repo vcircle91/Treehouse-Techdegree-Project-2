@@ -36,11 +36,7 @@ function showPage(list, page){
 }
 
 
-/*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
-
+// This function will create and insert/append the elements needed for the pagination buttons
 function addPagination(list){
   // create a variable to calculate the number of pages needed
   let numOfPages = Math.ceil(list.length / studentsPerPage);
@@ -49,29 +45,45 @@ function addPagination(list){
    let linkList = document.querySelector('.link-list');
    linkList.innerHTML = ``;
    
+   // Generate Buttons
    for (i = 0; i < numOfPages; i++){
      linkList.innerHTML += `
           <li>
-            <button type="button">${i + 1}</button>
+            <button type="button" class="paginationButton">${i + 1}</button>
           </li>`;
    }
 
-   let firstButton = document.querySelector("button");
+   // Set first button active
+   let firstButton = document.querySelector(".paginationButton");
    firstButton.className = "active";
-   console.log(firstButton);
 
+   // If clicked go to chosen page
    linkList.addEventListener('click', (event) => {
       if (event.target.type === 'button') {
          document.querySelector('.active').classList.remove("active");
          event.target.className = "active";
-         showPage(data, event.target.textContent)
+         showPage(list, event.target.textContent)
       }
    });
    }
 
+// This function performs the search for first or last name    
+function performSearch(search){
+   let result = [];
+   for (var i = 0; i < data.length; i++) {
+       if (data[i].name.first.toLowerCase().includes(search) || data[i].name.last.toLowerCase().includes(search))
+       {
+           result.push(data[i]);
+       }
+   }
+   showPage(result, 1);
+   addPagination(result);
+}   
+
+// This function adds the search bar to DOM
 function addSearchBar(){
-   header = document.querySelector('header');
-   searchBox = document.createElement('div');
+   let header = document.querySelector('header');
+   let searchBox = document.createElement('div');
    searchBox.innerHTML = `
    <label for="search" class="student-search">
    <span>Search by name</span>
@@ -79,6 +91,14 @@ function addSearchBar(){
    <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
    </label>`;
    header.appendChild(searchBox);
+
+   let searchButton = document.querySelector('button');
+   let searchField = document.querySelector('#search');
+
+   // Add event listener to perform search
+   searchButton.addEventListener('click', (event) => {
+      performSearch(searchField.value.toLowerCase());
+   });
 }   
 
    
