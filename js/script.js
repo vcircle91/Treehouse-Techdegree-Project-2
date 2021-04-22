@@ -102,7 +102,7 @@ function addSearchBar(){
    let searchField = document.querySelector('#search');
 
    // Add event listener to perform search
-   searchButton.addEventListener('click', (event) => {
+   searchField.addEventListener('keyup', (event) => {
       performSearch(searchField.value.toLowerCase());
    });
 }   
