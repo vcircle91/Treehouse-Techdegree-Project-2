@@ -53,6 +53,7 @@ function addPagination(list){
           </li>`;
    }
 
+
    // Set first button active
    let firstButton = document.querySelector(".paginationButton");
    firstButton.className = "active";
@@ -76,8 +77,15 @@ function performSearch(search){
            result.push(data[i]);
        }
    }
+   if (result.length > 0) {
    showPage(result, 1);
    addPagination(result);
+   } else {
+      let studentList = document.querySelector('.student-list');
+      let linkList = document.querySelector('.link-list');
+      studentList.innerHTML = "<div>No results</div>";
+      linkList.innerHTML = "";
+   }
 }   
 
 // This function adds the search bar to DOM
