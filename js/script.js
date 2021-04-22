@@ -35,7 +35,6 @@ function showPage(list, page){
 
 }
 
-
 // This function will create and insert/append the elements needed for the pagination buttons
 function addPagination(list){
   // create a variable to calculate the number of pages needed
@@ -52,7 +51,6 @@ function addPagination(list){
             <button type="button" class="paginationButton">${i + 1}</button>
           </li>`;
    }
-
 
    // Set first button active
    let firstButton = document.querySelector(".paginationButton");
@@ -108,10 +106,6 @@ function addSearchBar(){
       performSearch(searchField.value.toLowerCase());
    });
 }   
-
-   
-
-
 
 // Call functions
 showPage(data, 1);
